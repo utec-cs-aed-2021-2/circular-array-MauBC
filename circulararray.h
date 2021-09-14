@@ -7,7 +7,7 @@ class CircularArray
 private:
     T *array;
     int capacity;
-    int back, front;
+    int back=front-1, front=0;
     
 public:
     CircularArray();
@@ -77,12 +77,12 @@ string CircularArray<T>::to_string(string sep)
 }
 template <class T>
 int CircularArray<T>::mostrar_front(){
-    return front;
+    return array[front];
 }
 
 template <class T>
 int CircularArray<T>::mostrar_back(){
-    return back;
+    return array[back];
 }
 template <class T>
 void CircularArray<T>::push_front(T data){
@@ -104,4 +104,27 @@ void CircularArray<T>::push_back(T data){
         array[back]=data;
 
     }
+}
+template <class T>
+T CircularArray<T>::pop_front(){
+    if(front == 0 and back == -1) cout<<"Array Vacio"<<endl;
+    else if(front == capacity-1){
+        array[front]= NULL;
+        front = 0;
+    }
+    else if(front == back)cout<<"Array Vacio"<<endl;
+    else front++;
+
+
+}
+
+template <class T>
+T CircularArray<T>::pop_back(){
+    if(front == 0 and back == -1) cout<<"Array Vacio"<<endl;
+    else if(back == 0){
+        array[back]= NULL;
+        back = capacity-1;
+    }
+    else if(front == back)cout<<"Array Vacio"<<endl;
+    else back--;
 }
