@@ -128,3 +128,21 @@ T CircularArray<T>::pop_back(){
     else if(front == back)cout<<"Array Vacio"<<endl;
     else back--;
 }
+template <class T>
+bool CircularArray<T>::is_full(){
+    if(back+1 == front or (front == 0 and back ==capacity-1)) return true;
+    else return false;
+}
+template <class T>
+bool CircularArray<T>::is_empty(){
+    if((front==0 and back == -1) or (front+1 == back)) return true;
+    else return false;
+}
+template <class T>
+void CircularArray<T>::clear(){
+    while (array[front] != array[back]){
+        array[back]=NULL;
+        if(back == 0)back=capacity-1;
+        else back--;
+    }
+}
