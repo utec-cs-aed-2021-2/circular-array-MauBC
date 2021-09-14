@@ -86,7 +86,14 @@ int CircularArray<T>::mostrar_back(){
 }
 template <class T>
 void CircularArray<T>::push_front(T data){
-    if((front==0 and back==capacity-1) or (back+1 == front) ) cout<<"Array Lleno"<<endl;
+    if((front==0 and back==capacity-1) or (back+1 == front) ){
+        T* temp= new T [capacity+10];
+        for(int i =front; i<back;i++){
+            temp[i+1]= array[i];
+        }
+        temp[front]=data;
+        array= temp;
+    }
     else {
         if(front == 0) front= capacity-1;
         else front --;
@@ -96,7 +103,14 @@ void CircularArray<T>::push_front(T data){
 }
 template <class T>
 void CircularArray<T>::push_back(T data){
-    if((front==0 and back==capacity-1) or (back+1 == front) ) cout<<"Array Lleno"<<endl;
+    if((front==0 and back==capacity-1) or (back+1 == front) ) {
+        T* temp= new T [capacity+10];
+        for(int i =front; i<back;i++){
+            temp[i+1]= array[i];
+        }
+        temp[front]=data;
+        array= temp;
+    }
     else{
         if(back==-1) front = 0, back = 0;
         else if (back == capacity-1) back =0;
